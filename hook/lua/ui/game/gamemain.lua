@@ -1,3 +1,3 @@
 do
-import("/mods/Veterename/autorename.lua").VetInit()
+import("/mods/ScalableRename/autorename.lua").VetInit()
 end
