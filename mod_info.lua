@@ -1,10 +1,10 @@
-name = "Veterename"
-uid = "EE500612-B7E6-48DF-A24A-B30645A88D5E"
-version = 2
-copyright = ""
-description = "Renames veteran units"
-author = "Cobrand"
-url = ""
+name = "ScalableRename"
+uid = "cb3b020d-7bc7-43cc-b142-68eaac2ed3f3"
+version = 1
+copyright = "MIT"
+description = "Renames units"
+author = "peterpji"
+url = "https://github.com/peterpji/faf_unit_naming"
 selectable = true
 enabled = true
 exclusive = false
