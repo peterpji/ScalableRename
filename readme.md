@@ -7,6 +7,14 @@ It is based on "Veterename" by Cobrand. It aims to expand on existing mod by:
     * Adjust which units get names
     * Edit naming pools
 
+## Ideas
+* Not too frequent naming
+* Exclude inties and asf
+* XP reserved to top donors, otherwise everyone on the same level
+* Logarithmic name frequency
+    * Specific to tier?
+    * Separate land, air and navy?
+
 ## Original mod_info.lua
 name = "Veterename"
 uid = "EE500612-B7E6-48DF-A24A-B30645A88D5E"
