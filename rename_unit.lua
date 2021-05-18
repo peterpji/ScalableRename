@@ -43,7 +43,7 @@ function RandomNamingRate(namedUnitCount)
         return false
     end
 
-    local threshold = 0.5^namedUnitCount
+    local threshold = math.pow(0.5, namedUnitCount)
     local randomNumber = math.random()
     local result
     if randomNumber < threshold then
