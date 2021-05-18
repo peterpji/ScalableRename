@@ -43,7 +43,7 @@ function RandomNamingRate(namedUnitCount)
         return false
     end
 
-    local threshold = 1 / namedUnitCount
+    local threshold = 0.5^namedUnitCount
     local randomNumber = math.random()
     local result
     if randomNumber < threshold then
@@ -56,8 +56,7 @@ end
 
 function RenameUnit(username, unit)
     local tier = GetTier(unit)
-    if unit['IsChecked'] == nil and RandomNamingRate(RenameCounts[tier]) and ( unit:GetCustomName(unit) == nil or unit:IsInCategory('COMMAND') == true ) then
-        local unitname = unit:GetBlueprint().General.UnitName
+    if unit['IsChecked'] == nil and string.find(unit:GetBlueprint().Description, 'Interceptor') == nil and unit:IsInCategory('STRUCTURE') == false and RandomNamingRate(RenameCounts[tier]) and ( unit:GetCustomName(unit) == nil or unit:IsInCategory('COMMAND') == true ) then
         local newName
         local temptable ;
         if unit:IsInCategory('COMMAND') == true then
