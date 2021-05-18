@@ -1,7 +1,7 @@
 name = "ScalableRename"
 uid = "cb3b020d-7bc7-43cc-b142-68eaac2ed3f3"
 version = 1
-copyright = "MIT"
+copyright = "MIT open source lisence (https://opensource.org/licenses/MIT)"
 description = "Renames units"
 author = "peterpji"
 url = "https://github.com/peterpji/faf_unit_naming"
