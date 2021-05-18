@@ -34,9 +34,43 @@ function RandomNamingRate(namedUnitCount)
     return result
 end
 
+function ShouldBeRenamed(unit, tier)
+    -- Is rename already done
+    if unit['IsChecked'] == true then
+        return false
+    end
+
+    -- Is commander
+    if unit:IsInCategory('COMMAND') == true then
+        return false
+    end
+
+    -- Ignore structures
+    if unit:IsInCategory('STRUCTURE') == true then
+        return false
+    end
+
+    -- Ignore asf, inties, scouts etc
+    if unit:IsInCategory('AIR') == true and unit:IsInCategory('GROUNDATTACK') == false and unit:IsInCategory('BOMBER') == false then
+        return false
+    end
+
+    -- Already renamed
+    if unit:GetCustomName(unit) ~= nil then
+        return false
+    end
+
+    -- Randomize naming
+    if RandomNamingRate(RenameCounts[tier]) == false then
+        return false
+    end
+
+    return true
+end
+
 function RenameUnit(username, unit)
     local tier = GetTier(unit)
-    if unit['IsChecked'] == nil and string.find(unit:GetBlueprint().Description, 'Interceptor') == nil and unit:IsInCategory('STRUCTURE') == false and RandomNamingRate(RenameCounts[tier]) and ( unit:GetCustomName(unit) == nil or unit:IsInCategory('COMMAND') == true ) then
+    if ShouldBeRenamed(unit, tier) then
         local chosenNameTable
         if unit:IsInCategory('EXPERIMENTAL') then
             chosenNameTable = NameTable.Experimental
