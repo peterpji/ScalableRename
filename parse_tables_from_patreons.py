@@ -16,7 +16,7 @@ def add_extra_names(out):
 
 
 def write_t4_names(data, out):
-    for name in data[data['Pledge Amount'] > T4_THRESHOLD].Name:
+    for name in data[data['Pledge Amount'] >= T4_THRESHOLD].Name:
         out.write(f'"{name}",\n')
     add_extra_names(out)
 
