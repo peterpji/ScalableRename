@@ -20,6 +20,7 @@ It aims to expand on existing mod by:
     * Separate land, air and navy?
 
 ## Original mod_info.lua
+```lua
 name = "Veterename"
 uid = "EE500612-B7E6-48DF-A24A-B30645A88D5E"
 version = 2
@@ -36,3 +37,4 @@ requiresNames = {}
 conflicts = {}
 before = {}
 after = {}
+```
