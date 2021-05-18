@@ -1,6 +1,8 @@
 # Yet another unit naming mod
 This mod is for game Supreme Commander Forced Alliance and meant to be used with FA Forever community project.
-It is based on "Veterename" by Cobrand. It aims to expand on existing mod by:
+It is based on "Veterename" by Cobrand (Published here: https://forums.faforever.com/viewtopic.php?f=41&t=11382).
+
+It aims to expand on existing mod by:
 * Make unit name list easily expandable.
 * Edit naming rules
     * Adjustable naming frequency
