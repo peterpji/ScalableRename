@@ -1,6 +1,7 @@
 local NameTable = import("/mods/ScalableRename/tables.lua").GetTable()
 
-function GetNameCommander(username, unit, Ukills)
+function GetNameCommander(username, unit)
+    local Ukills = unit:GetStat('KILLS', 0).Value
     local newName
     if Ukills >= unit:GetBlueprint().Veteran.Level5 then
         newName = "<[["..username.."]]>"
@@ -19,13 +20,12 @@ function GetNameCommander(username, unit, Ukills)
 end
 
 function RenameUnit(username, unit)
-    local Ukills = unit:GetStat('KILLS', 0).Value
-    if Ukills >= unit:GetBlueprint().Veteran.Level1 and Ukills != 0 and ( unit:GetCustomName(unit) == nil or unit:IsInCategory('COMMAND') == true ) then
+    if unit['IsChecked'] == nil and ( unit:GetCustomName(unit) == nil or unit:IsInCategory('COMMAND') == true ) then
         local unitname = unit:GetBlueprint().General.UnitName
         local newName
         local temptable ;
         if unit:IsInCategory('COMMAND') == true then
-            newName = GetNameCommander(username, unit, Ukills)
+            newName = GetNameCommander(username, unit)
         else
             if unit:IsInCategory('EXPERIMENTAL') then
                 if unit:IsInCategory('UEF') then
@@ -52,14 +52,15 @@ function RenameUnit(username, unit)
             else
                 temptable = NameTable.Default
             end
-            if temptable != nil then
+            if temptable ~= nil then
                 newName = temptable[math.random(table.getsize (temptable) )]
             end
         end
-        if newName != nil then
+        if newName ~= nil then
             unit:SetCustomName(newName)
         else
             unit:SetCustomName("test")
         end
     end
+    unit['IsChecked'] = true
 end
