@@ -30,7 +30,7 @@ function UpdateAllUnits()
 	end
 end
 
-function RenameVet()
+function RenameAllUnits()
         for index, unit in allUnits do
             RenameUnit(username, unit)
         end
@@ -42,13 +42,13 @@ function Repeat()
 	while true do -- while there are units alive out there
 		WaitSeconds(1)
         UpdateAllUnits()
-		RenameVet()
+		RenameAllUnits()
 	end
 end
 
 function AddDeveloperHotkeys()
     local newSelectionsMap = {
-        ['shift-Backspace']        = {action =  'UI_Lua import("/mods/Veterename/autorename.lua").RenameVet()'},
+        ['shift-Backspace']        = {action =  'UI_Lua import("/mods/Veterename/autorename.lua").RenameAllUnits()'},
     } -- shortcut
     IN_AddKeyMapTable(newSelectionsMap)
 end
