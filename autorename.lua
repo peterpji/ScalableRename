@@ -48,7 +48,7 @@ end
 
 function AddDeveloperHotkeys()
     local newSelectionsMap = {
-        ['shift-Backspace']        = {action =  'UI_Lua import("/mods/Veterename/autorename.lua").RenameAllUnits()'},
+        ['shift-Backspace']        = {action =  'UI_Lua import("/mods/ScalableRename/autorename.lua").RenameAllUnits()'},
     } -- shortcut
     IN_AddKeyMapTable(newSelectionsMap)
 end
