@@ -1,6 +1,6 @@
 local NameTable = import("/mods/ScalableRename/tables.lua").GetTable()
 
-function GetNameCommander(unit, Ukills, username)
+function GetNameCommander(username, unit, Ukills)
     local newName
     if Ukills >= unit:GetBlueprint().Veteran.Level5 then
         newName = "<[["..username.."]]>"
@@ -25,7 +25,7 @@ function RenameUnit(username, unit)
         local newName
         local temptable ;
         if unit:IsInCategory('COMMAND') == true then
-            newName = GetNameCommander(unit, Ukills, username)
+            newName = GetNameCommander(username, unit, Ukills)
         else
             if unit:IsInCategory('EXPERIMENTAL') then
                 if unit:IsInCategory('UEF') then
