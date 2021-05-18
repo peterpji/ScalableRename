@@ -1,5 +1,5 @@
 local NameTable = {
-    Default = { -- land units
+    Default = {
         "Destiny",
         "Infinity",
         "Void",
