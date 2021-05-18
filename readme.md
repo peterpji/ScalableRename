@@ -3,21 +3,15 @@ This mod is for game Supreme Commander Forced Alliance and meant to be used with
 It is based on "Veterename" by Cobrand (Published here: https://forums.faforever.com/viewtopic.php?f=41&t=11382).
 
 It aims to expand on existing mod by:
-* Make unit name list easily expandable.
-* Edit naming rules
-    * Adjustable naming frequency
-    * Adjust which units get names
-    * Edit naming pools
-
-## Ideas
 * Exclude some units
     * Inties, asf
     * Structures?
-* XP reserved to top donors, otherwise everyone on the same level
+* Allow easily dividing names into pools. E.g.
+    * One name pool for T4
+    * One name pool for the rest
 * Not too frequent naming
-    * Logarithmic name frequency?
-    * Specific to tier?
-    * Separate land, air and navy?
+    * Logarithmic name frequency - naming frequency decreases quickly in order to avoid spamming
+    * Frequency is separate per tier and domain (land, air and navy)
 
 ## Original mod_info.lua
 ```lua
