@@ -14,6 +14,7 @@ function InitAllUnits()
     SelectUnits(selection); -- select back what was previously selected
 end
 
+
 function UpdateAllUnits()
     -- Add unit being built by others
     for _, unit in allUnits do
@@ -29,6 +30,7 @@ function UpdateAllUnits()
 		end
 	end
 end
+
 
 function RenameAllUnits()
         for index, unit in allUnits do
@@ -46,12 +48,14 @@ function Repeat()
 	end
 end
 
+
 function AddDeveloperHotkeys()
     local newSelectionsMap = {
         ['shift-Backspace']        = {action =  'UI_Lua import("/mods/ScalableRename/autorename.lua").RenameAllUnits()'},
     } -- shortcut
     IN_AddKeyMapTable(newSelectionsMap)
 end
+
 
 -- Init
 function VetInit()

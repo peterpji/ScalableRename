@@ -14,6 +14,7 @@ function InitRenameCounts()
 end
 local RenameCounts = InitRenameCounts()
 
+
 function GetCategory(unit, categoriesList)
     local categoryMatch
     for _, category in categoriesList do
@@ -24,6 +25,7 @@ function GetCategory(unit, categoriesList)
     end
     return categoryMatch
 end
+
 
 function RandomNamingRate(namedUnitCount)
     if namedUnitCount == nil then
@@ -40,6 +42,7 @@ function RandomNamingRate(namedUnitCount)
     end
     return result
 end
+
 
 function ShouldBeRenamed(unit, renamesDoneCount)
     -- Is rename already done
@@ -74,6 +77,7 @@ function ShouldBeRenamed(unit, renamesDoneCount)
 
     return true
 end
+
 
 function RenameUnit(unit)
     local tier = GetCategory(unit, techCategories)
