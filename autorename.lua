@@ -32,7 +32,7 @@ end
 
 function RenameAllUnits()
         for index, unit in allUnits do
-            RenameUnit(username, unit)
+            RenameUnit(unit)
         end
 end
 

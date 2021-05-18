@@ -75,7 +75,7 @@ function ShouldBeRenamed(unit, renamesDoneCount)
     return true
 end
 
-function RenameUnit(username, unit)
+function RenameUnit(unit)
     local tier = GetCategory(unit, techCategories)
     local domain = GetCategory(unit, domainCategories)
     local renamesDoneCount = RenameCounts[tier][domain]
