@@ -1,21 +1,28 @@
 local NameTable = import("/mods/ScalableRename/tables.lua").GetTable()
 local domainCategories = { "NAVAL", "LAND", "AIR" }
 local techCategories = { "TECH1", "TECH2", "TECH3" }
-local RenameCounts = {
-    TECH1 = 0,
-    TECH2 = 0,
-    TECH3 = 0
-}
 
-function GetTier(unit)
-    local found_tier
-    for _, tier in techCategories do
-        if EntityCategoryContains(categories[tier], unit) then
-            found_tier = tier
+function InitRenameCounts()
+    local renameCounts = {}
+    for _, tech in techCategories do
+        renameCounts[tech] = {}
+        for _, domain in domainCategories do
+            renameCounts[tech][domain] = 0
+        end
+    end
+    return renameCounts
+end
+local RenameCounts = InitRenameCounts()
+
+function GetCategory(unit, categoriesList)
+    local categoryMatch
+    for _, category in categoriesList do
+        if EntityCategoryContains(categories[category], unit) then
+            categoryMatch = category
             break
         end
     end
-    return found_tier
+    return categoryMatch
 end
 
 function RandomNamingRate(namedUnitCount)
@@ -34,7 +41,7 @@ function RandomNamingRate(namedUnitCount)
     return result
 end
 
-function ShouldBeRenamed(unit, tier)
+function ShouldBeRenamed(unit, renamesDoneCount)
     -- Is rename already done
     if unit['IsChecked'] == true then
         return false
@@ -61,7 +68,7 @@ function ShouldBeRenamed(unit, tier)
     end
 
     -- Randomize naming
-    if RandomNamingRate(RenameCounts[tier]) == false then
+    if RandomNamingRate(renamesDoneCount) == false then
         return false
     end
 
@@ -69,8 +76,11 @@ function ShouldBeRenamed(unit, tier)
 end
 
 function RenameUnit(username, unit)
-    local tier = GetTier(unit)
-    if ShouldBeRenamed(unit, tier) then
+    local tier = GetCategory(unit, techCategories)
+    local domain = GetCategory(unit, domainCategories)
+    local renamesDoneCount = RenameCounts[tier][domain]
+
+    if ShouldBeRenamed(unit, renamesDoneCount) then
         local chosenNameTable
         if unit:IsInCategory('EXPERIMENTAL') then
             chosenNameTable = NameTable.Experimental
@@ -80,7 +90,7 @@ function RenameUnit(username, unit)
         local newName = chosenNameTable[math.random(table.getsize(chosenNameTable))]
         unit:SetCustomName(newName)
         if tier ~= nil then
-            RenameCounts[tier] = 1 + RenameCounts[tier]
+            RenameCounts[tier][domain] = 1 + renamesDoneCount
         end
     end
     unit['IsChecked'] = true
