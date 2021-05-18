@@ -38,9 +38,25 @@ function GetTier(unit)
     return found_tier
 end
 
+function RandomNamingRate(namedUnitCount)
+    if namedUnitCount == nil then
+        return false
+    end
+
+    local threshold = 1 / namedUnitCount
+    local randomNumber = math.random()
+    local result
+    if randomNumber < threshold then
+        result = true
+    else
+        result = false
+    end
+    return result
+end
+
 function RenameUnit(username, unit)
-    if unit['IsChecked'] == nil and ( unit:GetCustomName(unit) == nil or unit:IsInCategory('COMMAND') == true ) then
-        local tier = GetTier(unit)
+    local tier = GetTier(unit)
+    if unit['IsChecked'] == nil and RandomNamingRate(RenameCounts[tier]) and ( unit:GetCustomName(unit) == nil or unit:IsInCategory('COMMAND') == true ) then
         local unitname = unit:GetBlueprint().General.UnitName
         local newName
         local temptable ;
@@ -84,6 +100,6 @@ function RenameUnit(username, unit)
         else
             unit:SetCustomName("test")
         end
-        unit['IsChecked'] = true
     end
+    unit['IsChecked'] = true
 end
