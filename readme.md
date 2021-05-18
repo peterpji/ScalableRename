@@ -8,10 +8,12 @@ It is based on "Veterename" by Cobrand. It aims to expand on existing mod by:
     * Edit naming pools
 
 ## Ideas
-* Not too frequent naming
-* Exclude inties and asf
+* Exclude some units
+    * Inties, asf
+    * Structures?
 * XP reserved to top donors, otherwise everyone on the same level
-* Logarithmic name frequency
+* Not too frequent naming
+    * Logarithmic name frequency?
     * Specific to tier?
     * Separate land, air and navy?
 
