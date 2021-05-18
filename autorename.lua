@@ -9,7 +9,7 @@ function UpdateAllUnits()
 			allUnits[unit:GetFocus():GetEntityId()] = unit:GetFocus()
 		end
 	end
-	
+
 	-- Remove dead
 	for entityid, unit in allUnits do
 		if unit:IsDead() then
@@ -50,8 +50,8 @@ function RenameVet()
                         elseif unit:IsInCategory('SERAPHIM') then
                             temptable = NameTable.SeraphimT4table
                         end
-                    elseif unit:IsInCategory('DEFENSE') then 
-                        temptable = NameTable.Defense 
+                    elseif unit:IsInCategory('DEFENSE') then
+                        temptable = NameTable.Defense
                     elseif unit:IsInCategory('STRUCTURE') then
                         temptable = NameTable.Structures
                     elseif unit:IsInCategory('BATTLESHIP') == true or unit:IsInCategory('BATTLECRUISER') then
@@ -89,16 +89,16 @@ function Repeat()
 		allUnits[unit:GetEntityId()] = unit
 	end
     SelectUnits(selection); -- select back what was previously selected
-    --     
+    --
 	while true do -- while there are units alive out there
 		WaitSeconds(1)
         UpdateAllUnits()
 		RenameVet()
-	end 
+	end
 end
 -- Init
 
-function VetInit() -- 
+function VetInit() --
 	if SessionIsReplay() == true then
 		LOG("Veterename: Disabled ; Watching replay")
 	else
