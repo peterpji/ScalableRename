@@ -96,17 +96,21 @@ function Repeat()
 		RenameVet()
 	end
 end
--- Init
 
-function VetInit() --
+function AddDeveloperHotkeys()
+    local newSelectionsMap = {
+        ['shift-Backspace']        = {action =  'UI_Lua import("/mods/Veterename/autorename.lua").RenameVet()'},
+    } -- shortcut
+    IN_AddKeyMapTable(newSelectionsMap)
+end
+
+-- Init
+function VetInit()
 	if SessionIsReplay() == true then
 		LOG("Veterename: Disabled ; Watching replay")
 	else
 		LOG("Veterename: Enabled")
-		local newSelectionsMap = {
-            ['shift-Backspace']        = {action =  'UI_Lua import("/mods/Veterename/autorename.lua").RenameVet()'},
-		} -- shortcut
-		IN_AddKeyMapTable(newSelectionsMap)
+        -- AddDeveloperHotkeys()
 		ForkThread(Repeat)
 	end
 end
