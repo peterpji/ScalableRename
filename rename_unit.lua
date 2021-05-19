@@ -32,7 +32,7 @@ function RandomNamingRate(namedUnitCount)
         return false
     end
 
-    local threshold = math.max(math.pow(0.3, namedUnitCount), 0.05) --Controls how often names are given
+    local threshold = math.max(math.pow(0.3, namedUnitCount), 1/40) --Controls how often names are given
     local randomNumber = math.random()
     local result
     if randomNumber < threshold then
@@ -47,6 +47,11 @@ end
 function ShouldBeRenamed(unit, renamesDoneCount)
     -- Is rename already done
     if unit['IsChecked'] == true then
+        return false
+    end
+
+    -- Already renamed
+    if unit:GetCustomName(unit) ~= nil then
         return false
     end
 
@@ -66,11 +71,6 @@ function ShouldBeRenamed(unit, renamesDoneCount)
 
     -- Ignore asf, inties, scouts etc
     if unit:IsInCategory('AIR') == true and unit:IsInCategory('GROUNDATTACK') == false and unit:IsInCategory('BOMBER') == false then
-        return false
-    end
-
-    -- Already renamed
-    if unit:GetCustomName(unit) ~= nil then
         return false
     end
 
