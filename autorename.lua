@@ -1,6 +1,5 @@
 local RenameUnit = import("/mods/ScalableRename/rename_unit.lua").RenameUnit
 local allUnits = {} ;
-local username = nil ;
 
 function InitAllUnits()
     -- this piece of code will actually select units at the beginning of the game
@@ -8,7 +7,6 @@ function InitAllUnits()
     local selection = GetSelectedUnits()
     UISelectionByCategory("ALLUNITS", false, false, false, false)
     for _, unit in (GetSelectedUnits() or {}) do
-        username = unit:GetCustomName(unit);
 		allUnits[unit:GetEntityId()] = unit
 	end
     SelectUnits(selection); -- select back what was previously selected
@@ -33,13 +31,13 @@ end
 
 
 function RenameAllUnits()
-        for index, unit in allUnits do
-            RenameUnit(unit)
-        end
+	for _, unit in allUnits do
+		RenameUnit(unit)
+	end
 end
 
 -- ForkThread
-function Repeat()
+function UpdateLoop()
     InitAllUnits()
 	while true do -- while there are units alive out there
 		WaitSeconds(1)
@@ -58,12 +56,12 @@ end
 
 
 -- Init
-function VetInit()
+function Main()
 	if SessionIsReplay() == true then
 		LOG("Veterename: Disabled ; Watching replay")
 	else
 		LOG("Veterename: Enabled")
         AddDeveloperHotkeys()
-		ForkThread(Repeat)
+		ForkThread(UpdateLoop)
 	end
 end
