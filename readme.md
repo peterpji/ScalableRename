@@ -14,6 +14,8 @@ It aims to expand on existing mod by:
     * Logarithmic name frequency - naming frequency decreases quickly in order to avoid spamming
     * Frequency is separate per tier and domain (land, air and navy)
 
+Disclaimer: I have not tested the performance impact of this mod on very long games. If you discover any significant adverse effect on the game performance, please let me know e.g. via a GitHub issue.
+
 ## Original mod_info.lua
 ```lua
 name = "Veterename"
