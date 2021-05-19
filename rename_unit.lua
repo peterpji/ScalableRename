@@ -32,7 +32,7 @@ function RandomNamingRate(namedUnitCount)
         return false
     end
 
-    local threshold = math.pow(0.3, namedUnitCount)
+    local threshold = math.max(math.pow(0.3, namedUnitCount), 0.05) --Controls how often names are given
     local randomNumber = math.random()
     local result
     if randomNumber < threshold then
@@ -48,6 +48,10 @@ function ShouldBeRenamed(unit, renamesDoneCount)
     -- Is rename already done
     if unit['IsChecked'] == true then
         return false
+    end
+
+    if unit:IsInCategory('EXPERIMENTAL') == true then
+        return true
     end
 
     -- Is commander
