@@ -59,8 +59,13 @@ function ShouldBeRenamed(unit, renamesDoneCount)
         return true
     end
 
-    -- Is commander
+    -- Ignore commander
     if unit:IsInCategory('COMMAND') == true then
+        return false
+    end
+
+    -- Ignore engineers except sparky
+    if unit:IsInCategory('ENGINEER') == true and unit:GetUnitId() ~= 'xel0209' then
         return false
     end
 
